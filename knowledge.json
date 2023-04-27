@@ -1,0 +1,56 @@
+{
+    "knowledge": [
+        {
+            "user_input": "Hi",
+            "bot_response": "Hello! How can I assist you?"
+        },
+        {
+            "user_input": "Hello",
+            "bot_response": "Hi there! What can I help you with?"
+        },
+        {
+            "user_input": "How are you?",
+            "bot_response": "I'm doing well, thank you! How can I assist you?"
+        },
+        {
+            "user_input": "What's your name?",
+            "bot_response": "My name is ChatBot. What can I help you with?"
+        },
+        {
+            "user_input": "Help me",
+            "bot_response": "Sure, what do you need help with?"
+        },
+        {
+            "user_input": "What is your purpose?",
+            "bot_response": "My purpose is to assist you with any questions or issues you may have. How can I help you?"
+        },
+        {
+            "user_input": "Thank you",
+            "bot_response": "You're welcome! Is there anything else I can help you with?"
+        },
+        {
+            "user_input": "Goodbye",
+            "bot_response": "Goodbye! Have a great day!"
+        },
+        {
+            "user_input": "hey",
+            "bot_response": "Hey"
+        },
+        {
+            "user_input": "fuck",
+            "bot_response": "?"
+        },
+        {
+            "user_input": "discord",
+            "bot_response": "Discord is a VoIP and instant messaging social platform. Users have the ability to communicate with voice calls, video calls, text messaging, media and files in private chats or as part of communities called \"servers\""
+        },
+        {
+            "user_input": "W",
+            "bot_response": "W"
+        },
+        {
+            "user_input": "t",
+            "bot_response": "d"
+        }
+    ]
+}

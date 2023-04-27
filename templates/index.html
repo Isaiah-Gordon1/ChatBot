@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Chat Bot</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+      }
+
+      .container {
+        width: 80%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        overflow: hidden;
+      }
+
+      .header {
+        padding: 20px;
+        background-color: #ff0000;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+      }
+
+      .chat-box {
+        padding: 20px;
+        height: 400px;
+        overflow-y: scroll;
+      }
+
+      .chat-box p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 10px 0;
+      }
+
+      .input-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #f1f1f1;
+      }
+
+      .input-box input[type="text"] {
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      .input-box button[type="submit"] {
+        background-color: #7a4caf;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">Chat Bot</div>
+      <div class="chat-box" id="chat-box"></div>
+      <div class="input-box">
+        <input type="text" placeholder="Type your message" id="input-box">
+        <button type="submit" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      function sendMessage() {
+        var message = document.getElementById("input-box").value;
+        document.getElementById("input-box").value = "";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/send_message");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += "<p><strong>You:</strong> " + message + "</p>";
+            chatBox.innerHTML += "<p><strong>Chat Bot:</strong> " + response.message + "</p>";
+            chatBox.scrollTop = chatBox.scrollHeight;
+          }
+        };
+        xhr.send(JSON.stringify({ message: message }));
+      }
+    </script>
+  </body>
+</html>

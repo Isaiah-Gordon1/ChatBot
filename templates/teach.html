@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Teach me something new!</h1>
+  <form action="{{ url_for('teach') }}" method="POST">
+    <label for="question">Question:</label>
+    <input type="text" id="question" name="question" required><br><br>
+    <label for="answer">Answer:</label>
+    <textarea id="answer" name="answer" rows="5" cols="50" required></textarea><br><br>
+    <input type="submit" value="Teach">
+  </form>
+{% endblock %}
