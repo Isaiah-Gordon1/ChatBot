@@ -1,12 +1,42 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
 {% block content %}
   <h1>Teach me something new!</h1>
-  <form action="{{ url_for('teach') }}" method="POST">
-    <label for="question">Question:</label>
-    <input type="text" id="question" name="question" required><br><br>
-    <label for="answer">Answer:</label>
-    <textarea id="answer" name="answer" rows="5" cols="50" required></textarea><br><br>
-    <input type="submit" value="Teach">
+  <form id="teach-form">
+    <div class="form-group">
+      <label for="user-input">User input:</label>
+      <input type="text" class="form-control" id="user-input" name="user-input" required>
+    </div>
+    <div class="form-group">
+      <label for="bot-response">Bot response:</label>
+      <textarea class="form-control" id="bot-response" name="bot-response" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Knowledge</button>
   </form>
+
+  <div id="message" class="mt-3"></div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    // Handle form submission
+    document.getElementById("teach-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const userInput = document.getElementById("user-input").value;
+      const botResponse = document.getElementById("bot-response").value;
+      const data = { "user_input": userInput, "bot_response": botResponse };
+
+      fetch("/add_knowledge", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("message").innerHTML = data.message;
+          document.getElementById("teach-form").reset();
+        })
+        .catch(error => console.error(error));
+    });
+  </script>
 {% endblock %}

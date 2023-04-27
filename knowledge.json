@@ -51,6 +51,10 @@
         {
             "user_input": "t",
             "bot_response": "d"
+        },
+        {
+            "user_input": "F",
+            "bot_response": "hehe"
         }
     ]
 }
